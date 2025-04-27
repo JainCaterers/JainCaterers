@@ -9,20 +9,31 @@
             }
         }, 1);
     };
-    spinner(0);
+    spinner();
     
     
     // Initiate the wowjs
     new WOW().init();
+
+
+    // Fixed Navbar
+    $('.fixed-top').css('top', $('.top-bar').height());
+    $(window).scroll(function () {
+        if ($(this).scrollTop()) {
+            $('.fixed-top').addClass('bg-dark').css('top', 0);
+        } else {
+            $('.fixed-top').removeClass('bg-dark').css('top', $('.top-bar').height());
+        }
+    });
     
     
-   // Back to top button
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-    }
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
     });
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
@@ -30,21 +41,18 @@
     });
 
 
-    // Modal Video
-    $(document).ready(function () {
-        var $videoSrc;
-        $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
-        });
-        console.log($videoSrc);
-
-        $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
-
-        $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc);
-        })
+    // Header carousel
+    $(".header-carousel").owlCarousel({
+        autoplay: false,
+        smartSpeed: 1500,
+        loop: true,
+        nav: true,
+        dots: false,
+        items: 1,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
     });
 
 
@@ -55,57 +63,32 @@
     });
 
 
-    // Testimonial carousel
-    $(".testimonial-carousel-1").owlCarousel({
-        loop: true,
-        dots: false,
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: false,
+        smartSpeed: 1000,
         margin: 25,
-        autoplay: true,
-        slideTransition: 'linear',
-        autoplayTimeout: 0,
-        autoplaySpeed: 10000,
-        autoplayHoverPause: false,
+        loop: true,
+        center: true,
+        dots: false,
+        nav: true,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ],
         responsive: {
             0:{
                 items:1
             },
-            575:{
-                items:1
-            },
-            767:{
+            768:{
                 items:2
             },
-            991:{
+            992:{
                 items:3
             }
         }
     });
 
-    $(".testimonial-carousel-2").owlCarousel({
-        loop: true,
-        dots: false,
-        rtl: true,
-        margin: 25,
-        autoplay: true,
-        slideTransition: 'linear',
-        autoplayTimeout: 0,
-        autoplaySpeed: 10000,
-        autoplayHoverPause: false,
-        responsive: {
-            0:{
-                items:1
-            },
-            575:{
-                items:1
-            },
-            767:{
-                items:2
-            },
-            991:{
-                items:3
-            }
-        }
-    });
-
+    
 })(jQuery);
 
