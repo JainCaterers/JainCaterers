@@ -1,2 +1,14 @@
+title: "Jain Caterers Saharanpur"
+description: "Best catering services for weddings, parties, and special events in Saharanpur and nearby areas."
+url: "https://jaincaterers.github.io"
+baseurl: "/JainCaterers" # Required for repo-based GitHub Pages
+
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Enable markdown processing
+markdown: kramdown
+
+# Optional: Set timezone
+timezone: Asia/Kolkata
